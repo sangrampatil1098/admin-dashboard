@@ -4,7 +4,7 @@ import { userColumns, userRows } from "../../dataTableSource";
 import { Link } from "react-router-dom";
 import "./dataTable.scss";
 
-const DataTable = () => {
+const DataTable = ({ page, title }) => {
   const [data, setData] = useState(userRows);
 
   const handleDelete = (id) => {
@@ -38,9 +38,9 @@ const DataTable = () => {
   return (
     <div className="dataTable">
       <div className="dataTableTitle">
-        <span className="title">Add New User</span>
-        <Link to="/users/new">
-          <button className="titleButton">Add New</button>
+        <span className="title">Add New {title}</span>
+        <Link to={`/${page}/new`}>
+          <button className="titleButton">Add {title}</button>
         </Link>
       </div>
       <DataGrid

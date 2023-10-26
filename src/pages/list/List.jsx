@@ -3,13 +3,13 @@ import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./list.scss";
 import DataTable from "../../components/dataTable/DataTable";
-const List = () => {
+const List = ({ page, title }) => {
   return (
     <div className="list">
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <DataTable />
+        <DataTable page={page} title={title} />
       </div>
     </div>
   );
