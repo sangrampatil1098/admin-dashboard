@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./pages/home/Home";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Routes,
+} from "react-router-dom";
+import Login from "./pages/login/Login";
+import List from "./pages/list/List";
+import SinglePage from "./pages/single/SinglePage";
+import NewPage from "./pages/new/NewPage";
+import { userInputs } from "./formSource";
+import { productInputs } from "./formSource";
+import "./components/style.scss";
+
+import { useContext } from "react";
+import { DarkModeContext } from "./DarkModeContext/DarkModeProvider";
 
 function App() {
+  const { darkMode } = useContext(DarkModeContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`${darkMode ? "app dark" : "app"}`}>
+      <Router>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="products">
+              <Route index element={<List />} />
+              <Route path=":productId" element={<SinglePage />} />
+              <Route
+                path="new"
+                element={
+                  <NewPage inputs={productInputs} title="Add New Product" />
+                }
+              />
+            </Route>
+            <Route path="users">
+              <Route index element={<List />} />
+              <Route path=":usertId" element={<SinglePage />} />
+              <Route
+                path="new"
+                element={<NewPage inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+          </Route>
+        </Routes>
+      </Router>
     </div>
   );
 }

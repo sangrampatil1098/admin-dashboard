@@ -1,0 +1,35 @@
+.table {
+  .cellWrapper {
+    display: flex;
+    align-items: center;
+  }
+  .image {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  .status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .statusIcon {
+    margin-right: 10px;
+  }
+  .statusIconPending {
+    color: red;
+  }
+  .statusIconApproved {
+    color: green;
+  }
+  .statusTitlePending {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.168);
+  }
+  .statusTitleApproved {
+    color: green;
+    background-color: rgba(0, 128, 0, 0.277);
+  }
+}
